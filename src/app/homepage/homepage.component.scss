@@ -1,0 +1,60 @@
+
+
+
+
+.app-header {
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  .logo {
+    height: 25px;
+    margin-right: 10px;
+  }
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  .bindmind {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.login-wrapper {
+  height: 100%;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  .example-form {
+    min-width: 100%;
+    max-width: 300px;
+    width: 100%;
+  }
+  .example-full-width, .btn-block {
+    width: 100%;
+  }
+  .mat-card-header {
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-weight: 700;
+    mat-card-title {
+      font-size: 30px;
+      margin: 0;
+    }
+  }
+  .mat-card {
+    width: 35%;
+    padding: 60px 90px 70px;
+  }
+  .mat-stroked-button {
+    border: 1px solid currentColor;
+    line-height: 54px;
+    background: #FFF7FA;
+  }
+  .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.8375em 0;
+  }
+}
