@@ -5,18 +5,19 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { UnauthorizedComponent } from './error/unauthorized/unauthorized.component';
-import { NotFoundComponent } from './error/not-found/not-found.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {PlayVideoComponent} from './student/play-video/play-video.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    MatDialogModule,
   ],
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   exports: [
     FooterComponent,

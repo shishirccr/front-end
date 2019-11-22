@@ -118,9 +118,14 @@ export class NavbarComponent implements OnInit {
       if(titlee.includes('#/home/')){
           titlee = titlee.slice(7);
       }
-
+      titlee = titlee.substring(0, titlee.indexOf("/"));
+      let titles = this.listTitles;
+      titles.push({path: 'student-course-home/:courseId', title: 'My modules',  icon: 'dashboard', class: '' });
+      titles.push({path: 'student-module-details/:moduleId', title: 'Module',  icon: 'dashboard', class: '' });
       for(var item = 0; item < this.listTitles.length; item++){
           if(this.listTitles[item].path === titlee){
+              return this.listTitles[item].title;
+          } else if (this.listTitles[item].path.startsWith(titlee)) {
               return this.listTitles[item].title;
           }
       }
