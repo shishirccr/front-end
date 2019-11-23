@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import * as Chartist from 'chartist';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../models/user';
 import {UserService} from '../services/user.service';
 import {Course} from '../models/course';
 import {CourseStudent} from '../models/coursestudent';
+import {Role} from '../models/role';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,37 +13,47 @@ import {CourseStudent} from '../models/coursestudent';
 })
 export class DashboardComponent implements OnInit {
 
-  studentId: string;
-  currentStudent: User;
+  userId: string;
+  currentUser: User;
   courseList: Array<Course>;
   allCourses: Array<Course>;
   errorMessage: string;
   infoMessage: string;
+  isInstructor = false;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
-    this.currentStudent = JSON.parse(localStorage.getItem("currentUser"));
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (this.currentUser && this.currentUser.role === Role.TEACHER) {
+      this.isInstructor = true;
+    }
   }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       if(params.has('id')){
-        this.studentId = params.get('id');
+        this.userId = params.get('id');
       }
 
-      if(this.studentId || this.currentStudent) {
-        this.findAllCoursesOfStudent();
+      if(this.userId || this.currentUser) {
+        this.findAllCoursesOfUser();
       }
     });
   }
 
-  findAllCoursesOfStudent(){
-    if(!this.studentId){
-      this.studentId = this.currentStudent.id.toString();
+  findAllCoursesOfUser(){
+    if(!this.userId){
+      this.userId = this.currentUser.id.toString();
     }
-    this.userService.findAllCoursesOfStudent(this.studentId).subscribe(data => {
-      this.courseList = data;
-      this.findAllCourses(data);
-    });
+    if (this.isInstructor) {
+      this.userService.findAllCoursesOfTeacher(this.userId).subscribe(data => {
+        this.courseList = data;
+      });
+    } else {
+      this.userService.findAllCoursesOfStudent(this.userId).subscribe(data => {
+        this.courseList = data;
+        this.findAllCourses(data);
+      });
+    }
   }
 
   findAllCourses(enrolledCourse) {
@@ -59,20 +69,20 @@ export class DashboardComponent implements OnInit {
   }
 
   enrollStudent(course) {
-    if(!this.currentStudent){
+    if(!this.currentUser){
       this.errorMessage = "You should sign in to enroll a course";
       return;
     }
     const courseStudent = new CourseStudent();
-    courseStudent.student = this.currentStudent;
+    courseStudent.student = this.currentUser;
     courseStudent.course = course;
 
     this.userService.enroll(courseStudent).subscribe(data => {
       this.infoMessage = "Enrollment is completed.";
       this.courseList = null;
       this.allCourses = null;
-      if(this.studentId || this.currentStudent) {
-        this.findAllCoursesOfStudent();
+      if(this.userId || this.currentUser) {
+        this.findAllCoursesOfUser();
       }
     }, err => {
       this.errorMessage = "Unexpected error occured.";
@@ -80,20 +90,20 @@ export class DashboardComponent implements OnInit {
   }
 
   unEnrollStudent(course) {
-    if(!this.currentStudent){
+    if(!this.currentUser){
       this.errorMessage = "You should sign in to enroll a course";
       return;
     }
     const courseStudent = new CourseStudent();
-    courseStudent.student = this.currentStudent;
+    courseStudent.student = this.currentUser;
     courseStudent.course = course;
 
     this.userService.deEnroll(courseStudent).subscribe(data => {
       this.infoMessage = "De-enrollment is completed.";
       this.courseList = null;
       this.allCourses = null;
-      if(this.studentId || this.currentStudent) {
-        this.findAllCoursesOfStudent();
+      if(this.userId || this.currentUser) {
+        this.findAllCoursesOfUser();
       }
     }, err => {
       this.errorMessage = "Unexpected error occured.";

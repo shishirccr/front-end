@@ -9,13 +9,14 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class PlayVideoComponent implements OnInit {
   safeUrl: any;
-
+  transcript: string;
   constructor(
       private dialogRef: MatDialogRef<PlayVideoComponent>,
       @Inject(MAT_DIALOG_DATA) data,
       private _sanitizer: DomSanitizer
   ) {
     this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl(data.url);
+    this.transcript = data.transcript;
   }
 
   ngOnInit() {

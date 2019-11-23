@@ -14,6 +14,9 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {PlayVideoComponent} from '../../components/student/play-video/play-video.component';
+import {ViewStudentComponent} from '../../components/instructor/view-student/view-student.component';
+import {InstructorCourseDetailsComponent} from '../../components/instructor/instructor-course-details/instructor-course-details.component';
+import { InstructorCourseHomeComponent } from '../../components/instructor/instructor-course-home/instructor-course-home.component';
 
 import {
   MatButtonModule,
@@ -43,6 +46,9 @@ import {
     StudentCourseHomeComponent,
     StudentModuleDetailsComponent,
     PlayVideoComponent,
+    InstructorCourseHomeComponent,
+    InstructorCourseDetailsComponent,
+    ViewStudentComponent,
     UserProfileComponent,
     TableListComponent,
     TypographyComponent,
@@ -52,7 +58,8 @@ import {
     UpgradeComponent,
   ],
   entryComponents: [
-    PlayVideoComponent
+    PlayVideoComponent,
+    ViewStudentComponent
   ]
 })
 

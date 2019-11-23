@@ -18,8 +18,6 @@ export class StudentModuleDetailsComponent implements OnInit {
   currentModule: Module;
   moduleContents: Array<ModuleContent>;
   moduleId: string;
-  safeUrl: any;
-  videoDialog : MatDialogRef<PlayVideoComponent>;
   innerWidth: number;
   constructor(private route: ActivatedRoute, private courseService: CourseService, private dialog: MatDialog) {
     this.currentStudent = JSON.parse(localStorage.getItem("currentUser"));
@@ -49,8 +47,7 @@ export class StudentModuleDetailsComponent implements OnInit {
     });
   }
 
-  open(videoLink) {
-    //this.videoDialog = this.dialog.open(PlayVideoComponent);
+  open(moduleContent) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = false;
@@ -68,7 +65,8 @@ export class StudentModuleDetailsComponent implements OnInit {
     dialogConfig.height = relativeHeight + 'px';
 
     dialogConfig.data = {
-      url: videoLink
+      url: moduleContent.video,
+      transcript: moduleContent.transcript
     }
 
     const dialogRef = this.dialog.open(PlayVideoComponent, dialogConfig);

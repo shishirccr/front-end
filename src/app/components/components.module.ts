@@ -6,18 +6,19 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import {PlayVideoComponent} from './student/play-video/play-video.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatDialogModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatDialogModule,
+        MatFormFieldModule,
+    ],
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent,
+    SidebarComponent
   ],
   exports: [
     FooterComponent,

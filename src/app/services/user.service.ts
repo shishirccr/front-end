@@ -8,6 +8,7 @@ import {CourseStudent} from '../models/coursestudent';
 
 let API_URL = "http://localhost:8080/api/user/";
 let STUDENT_API_URL = "http://localhost:8080/api/student/";
+let TEACHER_API_URL = "http://localhost:8080/api/teacher/";
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +75,11 @@ export class UserService {
   findAllCoursesOfStudent(studentId: string): Observable<any> {
     this.setHeaders();
     return this.http.get(STUDENT_API_URL + "courses/"+studentId, {headers: this.headers});
+  }
+
+  findAllCoursesOfTeacher(teacherId: string): Observable<any> {
+    this.setHeaders();
+    return this.http.get(TEACHER_API_URL + "courses/"+teacherId, {headers: this.headers});
   }
 
   enroll(courseStudent: CourseStudent): Observable<any> {
