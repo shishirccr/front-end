@@ -14,6 +14,9 @@ import {NotificationsComponent} from '../../notifications/notifications.componen
 import {UpgradeComponent} from '../../upgrade/upgrade.component';
 import {AuthGuard} from '../../guards/auth.guard';
 import {Role} from '../../models/role';
+import {DiscussionHomeComponent} from '../../discussion-home/discussion-home.component';
+import {DiscussionComponent} from '../../discussion/discussion.component';
+import {DiscussionPostComponent} from '../../discussion-post/discussion-post.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -70,4 +73,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
     { path: 'notifications',  component: NotificationsComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
     { path: 'upgrade',        component: UpgradeComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
-];
+    { path: 'discussion-home', component: DiscussionHomeComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
+    { path: 'discussion', component: DiscussionComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
+    { path: 'discussion-post', component: DiscussionPostComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}}
+
+    ];

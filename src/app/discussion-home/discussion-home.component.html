@@ -1,0 +1,52 @@
+<br>
+<br>
+<br>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Discussions <a routerLink="../discussion-post" routerLinkActive="active"><button  style="float: right;">+</button></a></h4>
+            <p class="card-category">Discussions and more discussions</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                <th>
+                  #
+                </th>
+                <th>
+                  Topic
+                </th>
+                <th>
+                  Posted By
+                </th>
+                <th>
+                  Posted On
+                </th>
+                </thead>
+                <tbody>
+
+
+                <tr *ngFor="let item of discussionList;  index as ind">
+                  <th scope="row">{{ind+1}}</th>
+                  <td>{{item.title}}</td>
+                  <td>{{item.userID}}</td>
+                  <td>{{item.timestamp}}</td>
+<!--                  <td><a routerLink="/discussion/{{item.discussionID}}" routerLinkActive="active"><button>Open {{item.discussionID}}</button></a></td>-->
+                </tr>
+
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

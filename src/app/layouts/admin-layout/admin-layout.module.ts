@@ -27,6 +27,9 @@ import {
   MatSelectModule,
   MatDialogModule
 } from '@angular/material';
+import {DiscussionHomeComponent} from '../../discussion-home/discussion-home.component';
+import {DiscussionComponent} from '../../discussion/discussion.component';
+import {DiscussionPostComponent} from '../../discussion-post/discussion-post.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -56,6 +59,9 @@ import {
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    DiscussionHomeComponent,
+    DiscussionPostComponent,
+    DiscussionComponent
   ],
   entryComponents: [
     PlayVideoComponent,

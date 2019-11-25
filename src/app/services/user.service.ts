@@ -91,4 +91,13 @@ export class UserService {
     this.setHeaders();
     return this.http.post(STUDENT_API_URL + "de-enroll", JSON.stringify(courseStudent), {headers: this.headers});
   }
+
+  // --- Discussions API
+
+  getAllDiscussions(): Observable<any> {
+    return this.http.get(API_URL + "discussions",
+        {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
+
+
 }

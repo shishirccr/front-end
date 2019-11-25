@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { RegisterComponent } from './register/register.component';
 import {NotFoundComponent} from './components/error/not-found/not-found.component';
 import {UnauthorizedComponent} from './components/error/unauthorized/unauthorized.component';
+import {DiscussionHomeComponent} from './discussion-home/discussion-home.component';
 
 
 const routes: Routes =[
