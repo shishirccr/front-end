@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../../models/user";
-import {Discussions} from "../../../models/discussions";
-import {ActivatedRoute} from "@angular/router";
+import {User} from 'app/models/user';
+import {Discussions} from 'app/models/discussions';
+import {ActivatedRoute} from '@angular/router';
 import {UserService} from '/Users/raja/Documents/GitHub/final/front-end/src/app/services/user.service';
 
 @Component({
