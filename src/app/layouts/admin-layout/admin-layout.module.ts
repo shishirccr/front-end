@@ -15,8 +15,11 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {PlayVideoComponent} from '../../components/student/play-video/play-video.component';
 import {ViewStudentComponent} from '../../components/instructor/view-student/view-student.component';
+import {StudentAssignmentHomeComponent} from '../../components/student/student-assignment-home/student-assignment-home.component';
+
 import {InstructorCourseDetailsComponent} from '../../components/instructor/instructor-course-details/instructor-course-details.component';
 import { InstructorCourseHomeComponent } from '../../components/instructor/instructor-course-home/instructor-course-home.component';
+import { InstructorAssignmentHomeComponent } from '../../components/instructor/instructor-assignment-home/instructor-assignment-home.component';
 
 import {
   MatButtonModule,
@@ -25,7 +28,9 @@ import {
   MatFormFieldModule,
   MatTooltipModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 @NgModule({
   imports: [
@@ -40,14 +45,18 @@ import {
     MatSelectModule,
     MatTooltipModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [
     DashboardComponent,
     StudentCourseHomeComponent,
     StudentModuleDetailsComponent,
+    StudentAssignmentHomeComponent,
     PlayVideoComponent,
     InstructorCourseHomeComponent,
     InstructorCourseDetailsComponent,
+    InstructorAssignmentHomeComponent,
     ViewStudentComponent,
     UserProfileComponent,
     TableListComponent,

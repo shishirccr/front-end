@@ -7,6 +7,8 @@ import {CourseService} from '../../../services/course.service';
 import {ModuleContent} from '../../../models/modulecontent';
 import {PlayVideoComponent} from '../play-video/play-video.component';
 import {MatDialogConfig} from '@angular/material/dialog';
+import {AssignmentService} from '../../../services/assignment.service';
+import {Assignment} from '../../../models/assignment';
 
 @Component({
   selector: 'app-student-module-details',
@@ -19,7 +21,8 @@ export class StudentModuleDetailsComponent implements OnInit {
   moduleContents: Array<ModuleContent>;
   moduleId: string;
   innerWidth: number;
-  constructor(private route: ActivatedRoute, private courseService: CourseService, private dialog: MatDialog) {
+  assignments: Array<Assignment>;
+  constructor(private route: ActivatedRoute, private courseService: CourseService, private dialog: MatDialog, private assignmentService: AssignmentService) {
     this.currentStudent = JSON.parse(localStorage.getItem("currentUser"));
   }
   ngOnInit() {
@@ -31,6 +34,7 @@ export class StudentModuleDetailsComponent implements OnInit {
       if(this.moduleId || this.currentStudent) {
         this.getModule();
         this.findModuleContent();
+        this.getAllAssignments()
       }
     });
   }
@@ -70,5 +74,11 @@ export class StudentModuleDetailsComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(PlayVideoComponent, dialogConfig);
+  }
+
+  getAllAssignments(){
+    this.assignmentService.findAllAssignmentOfModule(this.moduleId).subscribe(assignments => {
+      this.assignments = assignments;
+    });
   }
 }

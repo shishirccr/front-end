@@ -1,0 +1,49 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card card-profile">
+        <div class="card-avatar">
+          <a href="#pablo">
+            <img class="img" src="../assets/img/task-icon.png">
+          </a>
+        </div>
+        <div class="content">
+          <h6 class="category text-gray">Assignment Summary</h6>
+          <h4 class="card-title">{{currentAssignment.name}}</h4>
+          <p class="card-content">
+            {{currentAssignment.description}}
+          </p>
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <button class="btn btn-sm btn-info" (click)="submitAssignment()">Download assignment</button>
+              </div>
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <button class="btn btn-sm btn-info" (click)="submitAssignment()">Submit assignment</button>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header card-header-warning card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">content_copy</i>
+          </div>
+          <p class="card-category">Assignment grade</p>
+          <h3 class="card-title">Grade
+          </h3>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
