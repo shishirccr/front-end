@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from 'app/models/user';
 import {Discussions} from 'app/models/discussions';
 import {ActivatedRoute} from '@angular/router';
-import {UserService} from '/Users/raja/Documents/GitHub/final/front-end/src/app/services/user.service';
+import {UserService} from 'app/services/user.service';
 
 @Component({
   selector: 'app-discussion-home',

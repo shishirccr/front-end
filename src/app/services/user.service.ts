@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import {User} from '../models/user';
 import {Course} from '../models/course';
 import {CourseStudent} from '../models/coursestudent';
+import {Discussions} from '../models/discussions';
 
 let API_URL = "http://localhost:8080/api/user/";
 let STUDENT_API_URL = "http://localhost:8080/api/student/";
@@ -99,5 +100,9 @@ export class UserService {
         {headers: {"Content-Type":"application/json; charset=UTF-8"}});
   }
 
+  submitDiscussion(discussion: Discussions): Observable<any> {
+    return this.http.post(API_URL + "discussionpost/", JSON.stringify(discussion),
+        {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
 
 }
