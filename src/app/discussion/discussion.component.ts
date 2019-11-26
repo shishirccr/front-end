@@ -4,6 +4,7 @@ import {Discussions} from 'app/models/discussions';
 // import {Comments} from "app/models/comments";
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from 'app/services/user.service';
+import {Comments} from '../models/comments';
 
 @Component({
   selector: 'app-discussion',
@@ -70,4 +71,20 @@ export class DiscussionComponent implements OnInit {
     });
   }
 
+
+  private submitComment(value: string) {
+
+    let comment = new Comments();
+    comment.postId = this.discussionID;
+    comment.userID = this.currentStudent.id;
+    comment.timestamp = Date.now();
+    comment.body = value;
+    //console.log(comment.discussionID + '/' + comment.timestamp + '/' + comment.userID);
+    // discuss.body = this.comm;
+    this.userService.submitComment(comment).subscribe(data => {
+      // Do not remove next line. Error suppression
+      // @ts-ignore
+      this.router.navigate(['']);
+    });
+  }
 }

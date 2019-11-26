@@ -6,6 +6,7 @@ import {User} from '../models/user';
 import {Course} from '../models/course';
 import {CourseStudent} from '../models/coursestudent';
 import {Discussions} from '../models/discussions';
+import {Comments} from '../models/comments';
 
 let API_URL = "http://localhost:8080/api/user/";
 let STUDENT_API_URL = "http://localhost:8080/api/student/";
@@ -93,7 +94,7 @@ export class UserService {
     return this.http.post(STUDENT_API_URL + "de-enroll", JSON.stringify(courseStudent), {headers: this.headers});
   }
 
-  // --- Discussions API
+  // ------------------------------------------------------------------ Discussions API
 
   getAllDiscussions(): Observable<any> {
     return this.http.get(API_URL + "discussions",
@@ -110,15 +111,18 @@ export class UserService {
     return this.http.get(API_URL + "discussion/"+discussionID, {headers: this.headers});
   }
 
+  // ------------------------------------------------------------------ Comment API
+
+
   findCommentsByDiscussionID(discussionID: any) {
     this.setHeaders();
     return this.http.get(API_URL + "discussion/comments/"+discussionID, {headers: this.headers});
   }
 
-  // submitComment(postComment: Comments): Observable<any> {
-  //   return this.http.post(API_URL + "discussion/comment/", JSON.stringify(postComment),
-  //       {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  // }
+  submitComment(postComment: Comments): Observable<any> {
+    return this.http.post(API_URL + "discussion/postcomment/", JSON.stringify(postComment),
+        {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
 
 
 }
