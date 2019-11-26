@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from 'app/models/user';
+import {Discussions} from 'app/models/discussions';
+// import {Comments} from "app/models/comments";
+import {ActivatedRoute} from '@angular/router';
+import {UserService} from 'app/services/user.service';
 
 @Component({
   selector: 'app-discussion',
@@ -7,9 +12,62 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscussionComponent implements OnInit {
 
-  constructor() { }
+
+  currentStudent: User;
+  discussionContent: any;
+  commentContent: any;
+  currentDiscussion: Discussions;
+  private discussionID: string;
+  commentInput: string;
+
+
+  constructor(private router: ActivatedRoute, private userService: UserService) {
+    this.currentStudent = JSON.parse(localStorage.getItem("currentUser"));
+  }
 
   ngOnInit() {
+    this.router.paramMap.subscribe(params => {
+      if(params.has('postId')){
+        this.discussionID = params.get('postId');
+      }
+
+      if(this.discussionID || true) {
+        this.getDiscussion();
+        // alert(this.discussionID);
+         this.getComments();
+      }
+    });
+  }
+
+  getDiscussion(){
+    if(!this.discussionID){
+      this.discussionID = this.currentStudent.id.toString();
+    }
+    this.userService.findByDiscussionID(this.discussionID).subscribe(data => {
+      this.discussionContent = data;
+    });
+  }
+
+  // submitComment(value: string) {
+  //
+  //   let comment = new Comments();
+  //   comment.discussionID = this.discussionID;
+  //   comment.userID = this.currentStudent.id;
+  //   comment.timestamp = Date.now();
+  //   comment.body = value;
+  //   // discuss.body = this.comm;
+  //   this.userService.submitComment(comment).subscribe(data => {
+  //     // Do not remove next line. Error suppression
+  //     // @ts-ignore
+  //     this.router.navigate(['/discussionhome']);
+  //   });
+  // }
+
+
+  private getComments() {
+    this.userService.findCommentsByDiscussionID(this.discussionID).subscribe(data => {
+      this.commentContent = data;
+    });
   }
 
 }

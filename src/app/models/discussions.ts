@@ -1,5 +1,5 @@
 export class Discussions {
-    discussionID: number;
+    postId: number;
     title: string="";
     body: string="";
     timestamp: number;

@@ -74,7 +74,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
     { path: 'upgrade',        component: UpgradeComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
     { path: 'discussion-home', component: DiscussionHomeComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
-    { path: 'discussion', component: DiscussionComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
+    { path: 'discussion/:postId', component: DiscussionComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
     { path: 'discussion-post', component: DiscussionPostComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}}
 
     ];

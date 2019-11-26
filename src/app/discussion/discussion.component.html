@@ -4,16 +4,27 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title "><b>XXXXX XXXXX XXXXX XXXXX</b><a routerLink="" routerLinkActive="active"><button  style="float: right;">DELETE</button></a></h4>
-                        <b><p class="card-category">By xxxx</p></b>
-                        <p class="card-category">hh:mm mm-dd-yyyy</p>
+                        <h4 class="card-title "><b>{{discussionContent.title}}</b><a routerLink="" routerLinkActive="active"><button  style="float: right;">DELETE</button></a></h4>
+                        <b><p class="card-category">By {{discussionContent.userID}}</p></b>
+                        <p class="card-category">{{discussionContent.timestamp}}</p>
                     </div>
                     <div class="card-body">
                         <p>
-                            TESTING STUFF
+                            {{discussionContent.body}}
                         </p>
                     </div>
                 </div>
+
+
+
+                <hr>
+                <B>Comments:</B>
+
+                <div class="card-header" *ngFor="let item of commentContent;  index as ind">
+                    <b>{{item.userID}}</b> says:
+                    <div class="card-header" style="background-color: #b6eeff">{{item.body}}</div>
+                </div>
+
             </div>
         </div>
     </div>

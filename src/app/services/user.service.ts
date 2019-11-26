@@ -105,4 +105,20 @@ export class UserService {
         {headers: {"Content-Type":"application/json; charset=UTF-8"}});
   }
 
+  findByDiscussionID(discussionID: any) {
+    this.setHeaders();
+    return this.http.get(API_URL + "discussion/"+discussionID, {headers: this.headers});
+  }
+
+  findCommentsByDiscussionID(discussionID: any) {
+    this.setHeaders();
+    return this.http.get(API_URL + "discussion/comments/"+discussionID, {headers: this.headers});
+  }
+
+  // submitComment(postComment: Comments): Observable<any> {
+  //   return this.http.post(API_URL + "discussion/comment/", JSON.stringify(postComment),
+  //       {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  // }
+
+
 }
