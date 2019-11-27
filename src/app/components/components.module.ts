@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -14,6 +15,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
         RouterModule,
         MatDialogModule,
         MatFormFieldModule,
+        FormsModule,
     ],
   declarations: [
     FooterComponent,

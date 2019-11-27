@@ -97,7 +97,7 @@ export class InstructorCourseDetailsComponent implements OnInit {
         });
         swal({
           title: 'Success',
-          text: 'Assignment Added!',
+          text: 'New material added successfully',
           type: 'success',
           showCancelButton: false,
           confirmButtonText: 'OK'

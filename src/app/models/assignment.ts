@@ -7,4 +7,5 @@ export class Assignment {
     startDate: Date;
     endDate: Date;
     module: Module;
+    file: string;
 }

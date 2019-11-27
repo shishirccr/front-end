@@ -13,15 +13,11 @@
           <p class="card-content">
             {{currentAssignment.description}}
           </p>
-<!--          <h4 class="card-title">Assignment Materials:-->
-<!--            <a href="http://localhost:8080/assignments/materials/file?fileName={{assignment.file}}" target="_blank">{{assignmentSource}}</a>-->
-<!--          </h4>-->
-
           <form>
             <div class="row">
               <div class="col-md-4"></div>
               <div class="col-md-8">
-                <input type="file" (change)="fileChange($event)" placeholder="Upload file" #assignmentFile>
+                <input type="file" (change)="fileChange($event)" placeholder="Upload file" #file>
                 <button class="btn btn-sm btn-info" (click)="uploadAssignmentFile()">Upload Assignment</button>
               </div>
             </div>
@@ -36,26 +32,33 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title ">Submissions</h4>
+          <p class="card-category">List of students and their submission</p>
+        </div>
         <div class="card-content table-responsive">
           <table class="table table-hover">
             <thead class="text-success">
             <tr>
-              <th>Student ID</th>
               <th>Student Name</th>
-              <th>Marks</th>
-              <th>Provided Feedback</th>
               <th>Download</th>
               <th>Grade</th>
-              <th>Feedback</th>
             </tr>
             </thead>
             <tbody>
-            <td>
-              <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-lg" data-original-title="Edit Task" data-toggle="modal"
-                      data-target="#gradeModal" >
-                <i class="material-icons">grade</i>
-              </button>
-            </td>
+            <tr *ngFor="let submission of submissions">
+              <td>{{submission.uploadedBy.name}}</td>
+              <td class="td-actions">
+                <button type="button" class="btn btn-success btn-simple btn-lg" (click)="download(submission)" *ngIf="submission.file ? true: false">
+                  <i class="material-icons">cloud_download</i>Download
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-success btn-simple btn-lg" (click)="openDialog(submission)" *ngIf="submission.file ? true: false">
+                  <i class="material-icons">launch</i>Download
+                </button>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>

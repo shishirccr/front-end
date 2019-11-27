@@ -21,6 +21,7 @@ import {ViewCourseDialogComponent} from '../../components/student/view-course-di
 import {InstructorCourseDetailsComponent} from '../../components/instructor/instructor-course-details/instructor-course-details.component';
 import { InstructorCourseHomeComponent } from '../../components/instructor/instructor-course-home/instructor-course-home.component';
 import { InstructorAssignmentHomeComponent } from '../../components/instructor/instructor-assignment-home/instructor-assignment-home.component';
+import { AssignGradeComponent } from '../../components/instructor/assign-grade/assign-grade.component';
 
 import {
   MatButtonModule,
@@ -59,6 +60,7 @@ import {
     InstructorCourseDetailsComponent,
     InstructorAssignmentHomeComponent,
     ViewStudentComponent,
+    AssignGradeComponent,
     ViewCourseDialogComponent,
     UserProfileComponent,
     TableListComponent,
@@ -71,7 +73,8 @@ import {
   entryComponents: [
     PlayVideoComponent,
     ViewStudentComponent,
-    ViewCourseDialogComponent
+    ViewCourseDialogComponent,
+    AssignGradeComponent
   ]
 })
 

@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   roles = [
-    {id: Role.STUDENT, name: 'Free loader'},
+    {id: Role.STUDENT, name: 'Student'},
     {id: Role.TEACHER, name: 'Instructor'}
   ];
   user: User = new User();
