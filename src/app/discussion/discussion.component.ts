@@ -40,7 +40,7 @@ export class DiscussionComponent implements OnInit {
     });
   }
 
-  getDiscussion(){
+  private getDiscussion(){
     if(!this.discussionID){
       this.discussionID = this.currentStudent.id.toString();
     }
@@ -48,21 +48,6 @@ export class DiscussionComponent implements OnInit {
       this.discussionContent = data;
     });
   }
-
-  // submitComment(value: string) {
-  //
-  //   let comment = new Comments();
-  //   comment.discussionID = this.discussionID;
-  //   comment.userID = this.currentStudent.id;
-  //   comment.timestamp = Date.now();
-  //   comment.body = value;
-  //   // discuss.body = this.comm;
-  //   this.userService.submitComment(comment).subscribe(data => {
-  //     // Do not remove next line. Error suppression
-  //     // @ts-ignore
-  //     this.router.navigate(['/discussionhome']);
-  //   });
-  // }
 
 
   private getComments() {
@@ -73,18 +58,36 @@ export class DiscussionComponent implements OnInit {
 
 
   private submitComment(value: string) {
-
     let comment = new Comments();
     comment.postId = this.discussionID;
     comment.userID = this.currentStudent.id;
     comment.timestamp = Date.now();
     comment.body = value;
-    //console.log(comment.discussionID + '/' + comment.timestamp + '/' + comment.userID);
-    // discuss.body = this.comm;
     this.userService.submitComment(comment).subscribe(data => {
       // Do not remove next line. Error suppression
       // @ts-ignore
       this.router.navigate(['']);
     });
+    this.getComments();
+  }
+
+  deleteDiscussion() {
+    this.userService.deleteDiscussion(this.discussionID).subscribe(data => {
+      // @ts-ignore
+      this.router.navigate(['discussion-home']);
+    }, err => {
+      // @ts-ignore
+      this.errorMessage = 'Something wrong has happened';
+    });
+  }
+
+  deleteComment(commentID: number) {
+    this.userService.deleteComment(commentID).subscribe(data => {
+    }, err => {
+      // @ts-ignore
+      this.errorMessage = 'Something wrong has happened';
+    });
+    this.getComments();
+
   }
 }

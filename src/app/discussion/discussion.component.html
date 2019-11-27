@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title "><b>{{discussionContent.title}}</b><a routerLink="" routerLinkActive="active">
-                            <button  style="float: right;" *ngIf="discussionContent.userID==this.currentStudent.id" >DELETE</button></a></h4>
+                            <button  style="float: right;" *ngIf="discussionContent.userID==this.currentStudent.id" (click)="deleteDiscussion()" >DELETE</button></a></h4>
                         <b><p class="card-category">By {{discussionContent.userID}}</p></b>
                         <p class="card-category">{{discussionContent.timestamp}}</p>
                     </div>
@@ -25,9 +25,9 @@
                 <hr>
                 <B>Comments:</B>
 
-                <div class="card-header" *ngFor="let item of commentContent;  index as ind" >
+                <div class="card-header" *ngFor="let item of commentContent; " >
                     <b>{{item.userID}}</b> says:
-                    <button  style="float: right;" *ngIf="item.userID==this.currentStudent.id" >DELETE</button>
+                    <button  style="float: right;" *ngIf="item.userID==this.currentStudent.id" (click)="deleteComment(item.id)" >DELETE</button>
                     <div class="card-header" style="background-color: #b6eeff">{{item.body}} </div>
                 </div>
 

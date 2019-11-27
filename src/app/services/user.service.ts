@@ -111,6 +111,12 @@ export class UserService {
     return this.http.get(API_URL + "discussion/"+discussionID, {headers: this.headers});
   }
 
+  deleteDiscussion(discussionID: any): Observable<any> {
+    this.setHeaders();
+    return this.http.post(API_URL + "discussions/delete/discussion/"+discussionID,
+        JSON.stringify(discussionID), {headers: this.headers});
+  }
+
   // ------------------------------------------------------------------ Comment API
 
 
@@ -122,6 +128,12 @@ export class UserService {
   submitComment(postComment: Comments): Observable<any> {
     return this.http.post(API_URL + "discussion/postcomment/", JSON.stringify(postComment),
         {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
+
+  deleteComment(commentID: any): Observable<any> {
+    this.setHeaders();
+    return this.http.post(API_URL + "discussions/delete/comment/"+commentID,
+        JSON.stringify(commentID), {headers: this.headers});
   }
 
 
