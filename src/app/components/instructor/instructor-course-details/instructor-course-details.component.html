@@ -83,6 +83,55 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger" style = "background: #008010d1">
+                        <i class="material-icons">note_add</i>
+                        <h4 class="card-title ">Add new material</h4>
+                    </div>
+                    <div class="card-footer">
+                        <div>
+                            <form>
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating is-empty">
+                                        <label class="control-label">Module id: {{moduleId}}</label>
+                                        <input type="text" class="form-control" disabled>
+                                        <span class="material-input"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group form-success label-floating is-empty">
+                                        <label class="control-label">Video title:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="moduleContent.videoTitle" name="assignName">
+                                        <span class="material-input"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group form-success label-floating is-empty">
+                                        <label class="control-label">Video link:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="moduleContent.video" name="description">
+                                        <span class="material-input"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group form-success label-floating is-empty">
+                                        <label class="control-label">Transcript information:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="moduleContent.transcript" name="description">
+                                        <span class="material-input"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="control-label">Upload material:   </label>
+                                    <input type="file" (change)="fileChange($event)" placeholder="Upload file" #file>
+                                </div>
+
+                                <button type="submit" class="btn btn-success pull-right" (click)="addNewMaterial()">Add material</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">

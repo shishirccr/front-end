@@ -5,6 +5,8 @@ import {UserService} from '../services/user.service';
 import {Course} from '../models/course';
 import {CourseStudent} from '../models/coursestudent';
 import {Role} from '../models/role';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {ViewCourseDialogComponent} from '../components/student/view-course-dialog/view-course-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,8 +22,9 @@ export class DashboardComponent implements OnInit {
   errorMessage: string;
   infoMessage: string;
   isInstructor = false;
+  innerWidth: number;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private userService: UserService, private dialog: MatDialog) {
     this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (this.currentUser && this.currentUser.role === Role.TEACHER) {
       this.isInstructor = true;
@@ -29,6 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
     this.route.paramMap.subscribe(params => {
       if(params.has('id')){
         this.userId = params.get('id');
@@ -108,5 +112,29 @@ export class DashboardComponent implements OnInit {
     }, err => {
       this.errorMessage = "Unexpected error occured.";
     });
+  }
+
+  open(course) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+
+    let relativeWidth = (this.innerWidth * 40) / 100; // take up to 80% of the screen size
+    if (this.innerWidth > 1500) {
+      relativeWidth = (1500 * 40 ) / 100;
+    } else {
+      relativeWidth = (this.innerWidth * 40 ) / 100;
+    }
+
+    const relativeHeight = (relativeWidth * 5) / 16 + 120; // 16:9 to which we add 120 px for the dialog action buttons ("close")
+    dialogConfig.width = relativeWidth + 'px';
+    dialogConfig.height = relativeHeight + 'px';
+
+    dialogConfig.data = {
+      course: course
+    }
+
+    const dialogRef = this.dialog.open(ViewCourseDialogComponent, dialogConfig);
   }
 }

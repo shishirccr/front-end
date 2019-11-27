@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {CourseStudent} from '../models/coursestudent';
 import {Assignment} from '../models/assignment';
+import {ModuleContent} from '../models/modulecontent';
 
 const ASSIGNMENT_API_URL = "http://localhost:8080/api/assignment/";
 

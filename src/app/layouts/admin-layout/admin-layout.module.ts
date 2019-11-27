@@ -16,6 +16,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {PlayVideoComponent} from '../../components/student/play-video/play-video.component';
 import {ViewStudentComponent} from '../../components/instructor/view-student/view-student.component';
 import {StudentAssignmentHomeComponent} from '../../components/student/student-assignment-home/student-assignment-home.component';
+import {ViewCourseDialogComponent} from '../../components/student/view-course-dialog/view-course-dialog.component';
 
 import {InstructorCourseDetailsComponent} from '../../components/instructor/instructor-course-details/instructor-course-details.component';
 import { InstructorCourseHomeComponent } from '../../components/instructor/instructor-course-home/instructor-course-home.component';
@@ -58,6 +59,7 @@ import {
     InstructorCourseDetailsComponent,
     InstructorAssignmentHomeComponent,
     ViewStudentComponent,
+    ViewCourseDialogComponent,
     UserProfileComponent,
     TableListComponent,
     TypographyComponent,
@@ -68,7 +70,8 @@ import {
   ],
   entryComponents: [
     PlayVideoComponent,
-    ViewStudentComponent
+    ViewStudentComponent,
+    ViewCourseDialogComponent
   ]
 })
 
