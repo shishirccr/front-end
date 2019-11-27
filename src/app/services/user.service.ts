@@ -5,6 +5,8 @@ import {map} from 'rxjs/operators';
 import {User} from '../models/user';
 import {Course} from '../models/course';
 import {CourseStudent} from '../models/coursestudent';
+import {Discussions} from '../models/discussions';
+import {Comments} from '../models/comments';
 
 let API_URL = "http://localhost:8080/api/user/";
 let STUDENT_API_URL = "http://localhost:8080/api/student/";
@@ -91,4 +93,48 @@ export class UserService {
     this.setHeaders();
     return this.http.post(STUDENT_API_URL + "de-enroll", JSON.stringify(courseStudent), {headers: this.headers});
   }
+
+  // ------------------------------------------------------------------ Discussions API
+
+  getAllDiscussions(): Observable<any> {
+    return this.http.get(API_URL + "discussions",
+        {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
+
+  submitDiscussion(discussion: Discussions): Observable<any> {
+    return this.http.post(API_URL + "discussionpost/", JSON.stringify(discussion),
+        {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
+
+  findByDiscussionID(discussionID: any) {
+    this.setHeaders();
+    return this.http.get(API_URL + "discussion/"+discussionID, {headers: this.headers});
+  }
+
+  deleteDiscussion(discussionID: any): Observable<any> {
+    this.setHeaders();
+    return this.http.post(API_URL + "discussions/delete/discussion/"+discussionID,
+        JSON.stringify(discussionID), {headers: this.headers});
+  }
+
+  // ------------------------------------------------------------------ Comment API
+
+
+  findCommentsByDiscussionID(discussionID: any) {
+    this.setHeaders();
+    return this.http.get(API_URL + "discussion/comments/"+discussionID, {headers: this.headers});
+  }
+
+  submitComment(postComment: Comments): Observable<any> {
+    return this.http.post(API_URL + "discussion/postcomment/", JSON.stringify(postComment),
+        {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
+
+  deleteComment(commentID: any): Observable<any> {
+    this.setHeaders();
+    return this.http.post(API_URL + "discussions/delete/comment/"+commentID,
+        JSON.stringify(commentID), {headers: this.headers});
+  }
+
+
 }

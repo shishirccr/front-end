@@ -1,0 +1,37 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title "><b>{{discussionContent.title}}</b><a routerLink="" routerLinkActive="active">
+                            <button  style="float: right;" *ngIf="discussionContent.userID==this.currentStudent.id" (click)="deleteDiscussion()" >DELETE</button></a></h4>
+                        <b><p class="card-category">By {{discussionContent.userID}}</p></b>
+                        <p class="card-category">{{discussionContent.timestamp}}</p>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            {{discussionContent.body}}
+                        </p>
+                    </div>
+                </div>
+
+                <form>
+                    <input type="text"  placeholder="Say something here..." #cbody [(ngModel)]="commentInput" required/>
+                    <button type="button" (click)="submitComment(cbody.value)">Post Comment</button>
+                </form>
+                <br>
+
+                <hr>
+                <B>Comments:</B>
+
+                <div class="card-header" *ngFor="let item of commentContent; " >
+                    <b>{{item.userID}}</b> says:
+                    <button  style="float: right;" *ngIf="item.userID==this.currentStudent.id" (click)="deleteComment(item.id)" >DELETE</button>
+                    <div class="card-header" style="background-color: #b6eeff">{{item.body}} </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
