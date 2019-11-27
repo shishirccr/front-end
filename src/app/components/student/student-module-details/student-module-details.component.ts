@@ -55,16 +55,10 @@ export class StudentModuleDetailsComponent implements OnInit {
   download(moduleContent) {
     this.courseService.downloadMaterial(moduleContent.file)
         .subscribe(response => {
-          let test = this.moduleId;
-          let fileName = moduleContent.file.substring(moduleContent.file.lastIndexOf("/") + 1);
-          let file = new Blob([response], { type: 'application/pdf' });
-          var fileURL = URL.createObjectURL(file);
+          const fileName = moduleContent.file.substring(moduleContent.file.lastIndexOf("/") + 1);
+          const file = new Blob([response], { type: 'application/pdf' });
+          const fileURL = URL.createObjectURL(file);
           window.open(fileURL);
-          //fileSaver.saveAs(response, "filename.pdf");
-          //const filename = response.headers.get('filename');
-          // const blob = new Blob([response.body], {type: 'application/pdf'});
-          // var fileURL = URL.createObjectURL(blob);
-          // window.open(fileURL);
            fileSaver.saveAs(fileURL, fileName);
         });
   }

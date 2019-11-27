@@ -44,7 +44,7 @@ export class CourseService {
   }
 
   downloadMaterial(filePath: string): Observable<any>{
-  let headers = new HttpHeaders({
+  const headers = new HttpHeaders({
     authorization:'Bearer ' + this.currentUser.token
   });
   return this.http.get<any>('http://localhost:8080/api/course/modules/download?file=' + filePath, {
