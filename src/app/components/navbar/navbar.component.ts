@@ -118,7 +118,10 @@ export class NavbarComponent implements OnInit {
       if(titlee.includes('#/home/')){
           titlee = titlee.slice(7);
       }
-      titlee = titlee.substring(0, titlee.indexOf("/"));
+      const index = titlee.indexOf("/");
+      if (index > 0) {
+          titlee = titlee.substring(0, index);
+      }
       let titles = this.listTitles;
       titles.push({path: 'student-course-home/:courseId', title: 'My modules',  icon: 'dashboard', class: '' });
       titles.push({path: 'student-module-details/:moduleId', title: 'Module',  icon: 'dashboard', class: '' });

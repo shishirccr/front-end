@@ -23,11 +23,11 @@ export class DiscussionPostComponent implements OnInit {
   }
 
   submitDiscussion(){
-    this.discussion.userID = this.currentUser.id;
+    this.discussion.userID = this.currentUser;
     // this.discussion.timestamp = this.time.toLocaleString().slice(0, 10) +' '+ this.time.toLocaleString().slice(11,20)
     this.discussion.timestamp = Date.now();
     this.userService.submitDiscussion(this.discussion).subscribe(data => {
-      this.router.navigate(['']);
+      this.router.navigate(['home/discussion-home']);
     }, err => {
       this.errorMessage = 'Something wrong has happened';
     });
