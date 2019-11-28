@@ -91,4 +91,10 @@ export class UserService {
     this.setHeaders();
     return this.http.post(STUDENT_API_URL + "de-enroll", JSON.stringify(courseStudent), {headers: this.headers});
   }
+
+  updateProfile(user: User): Observable<any> {
+    this.setHeaders();
+    return this.http.post(API_URL + "profileupdate", JSON.stringify(user), {headers: this.headers});
+  }
+  
 }
