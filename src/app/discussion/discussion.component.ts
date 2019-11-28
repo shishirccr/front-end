@@ -53,6 +53,8 @@ export class DiscussionComponent implements OnInit {
   private getComments() {
     this.userService.findCommentsByDiscussionID(this.discussionID).subscribe(data => {
       this.commentContent = data;
+      this.commentContent.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1);
+      this.commentContent.reverse();
     });
   }
 
@@ -60,7 +62,7 @@ export class DiscussionComponent implements OnInit {
   private submitComment(value: string) {
     let comment = new Comments();
     comment.postId = this.discussionID;
-    comment.userID = this.currentStudent.id;
+    comment.userID = this.currentStudent;
     comment.timestamp = Date.now();
     comment.body = value;
     this.userService.submitComment(comment).subscribe(data => {
