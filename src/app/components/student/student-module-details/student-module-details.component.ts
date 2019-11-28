@@ -9,6 +9,7 @@ import {PlayVideoComponent} from '../play-video/play-video.component';
 import {MatDialogConfig} from '@angular/material/dialog';
 import {AssignmentService} from '../../../services/assignment.service';
 import {Assignment} from '../../../models/assignment';
+import * as fileSaver from 'file-saver';
 
 @Component({
   selector: 'app-student-module-details',
@@ -49,6 +50,17 @@ export class StudentModuleDetailsComponent implements OnInit {
     this.courseService.getModuleById(this.moduleId).subscribe(module => {
       this.currentModule = module;
     });
+  }
+
+  download(moduleContent) {
+    this.courseService.downloadMaterial(moduleContent.file)
+        .subscribe(response => {
+          const fileName = moduleContent.file.substring(moduleContent.file.lastIndexOf("/") + 1);
+          const file = new Blob([response], { type: 'application/pdf' });
+          const fileURL = URL.createObjectURL(file);
+          window.open(fileURL);
+           fileSaver.saveAs(fileURL, fileName);
+        });
   }
 
   open(moduleContent) {

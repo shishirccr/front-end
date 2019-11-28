@@ -40,6 +40,7 @@
     "classlist.js": "1.1.20150312",
     "core-js": "3.1.3",
     "express": "4.17.1",
+    "file-saver": "^2.0.2",
     "googleapis": "40.0.0",
     "hammerjs": "2.0.8",
     "jquery": "3.4.1",
@@ -48,12 +49,12 @@
     "popper.js": "1.15.0",
     "rxjs": "6.5.2",
     "rxjs-compat": "6.5.2",
-    "web-animations-js": "2.3.1",
     "sweetalert2": "^6.9.1",
+    "web-animations-js": "2.3.1",
     "zone.js": "0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.800.2",
+    "@angular-devkit/build-angular": "^0.800.6",
     "@angular/cli": "8.0.2",
     "@angular/compiler-cli": "8.0.0",
     "@angular/language-service": "8.0.0",

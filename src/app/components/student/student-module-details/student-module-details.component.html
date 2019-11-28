@@ -33,6 +33,8 @@
           <table class="table table-hover">
             <thead class="text-success">
             <th>Module content</th>
+            <th>Watch module</th>
+            <th>Download material</th>
             </thead>
             <tbody>
             <tr *ngFor="let moduleContent of moduleContents">
@@ -40,6 +42,11 @@
               <td class="td-actions">
                 <button type="button" class="btn btn-success btn-simple btn-lg" (click)="open(moduleContent)">
                   <i class="material-icons">launch</i>Open
+                </button>
+              </td>
+              <td class="td-actions">
+                <button type="button" class="btn btn-success btn-simple btn-lg" (click)="download(moduleContent)">
+                  <i class="material-icons">cloud_download</i>Download
                 </button>
               </td>
             </tr>

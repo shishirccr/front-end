@@ -16,10 +16,12 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {PlayVideoComponent} from '../../components/student/play-video/play-video.component';
 import {ViewStudentComponent} from '../../components/instructor/view-student/view-student.component';
 import {StudentAssignmentHomeComponent} from '../../components/student/student-assignment-home/student-assignment-home.component';
+import {ViewCourseDialogComponent} from '../../components/student/view-course-dialog/view-course-dialog.component';
 
 import {InstructorCourseDetailsComponent} from '../../components/instructor/instructor-course-details/instructor-course-details.component';
 import { InstructorCourseHomeComponent } from '../../components/instructor/instructor-course-home/instructor-course-home.component';
 import { InstructorAssignmentHomeComponent } from '../../components/instructor/instructor-assignment-home/instructor-assignment-home.component';
+import { AssignGradeComponent } from '../../components/instructor/assign-grade/assign-grade.component';
 
 import {
   MatButtonModule,
@@ -32,6 +34,9 @@ import {
   MatDatepickerModule,
   MatNativeDateModule
 } from '@angular/material';
+import {DiscussionHomeComponent} from '../../discussion-home/discussion-home.component';
+import {DiscussionComponent} from '../../discussion/discussion.component';
+import {DiscussionPostComponent} from '../../discussion-post/discussion-post.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -58,6 +63,8 @@ import {
     InstructorCourseDetailsComponent,
     InstructorAssignmentHomeComponent,
     ViewStudentComponent,
+    AssignGradeComponent,
+    ViewCourseDialogComponent,
     UserProfileComponent,
     TableListComponent,
     TypographyComponent,
@@ -65,10 +72,15 @@ import {
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    DiscussionHomeComponent,
+    DiscussionPostComponent,
+    DiscussionComponent
   ],
   entryComponents: [
     PlayVideoComponent,
-    ViewStudentComponent
+    ViewStudentComponent,
+    ViewCourseDialogComponent,
+    AssignGradeComponent
   ]
 })
 

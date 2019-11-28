@@ -8,6 +8,7 @@ import {AssignmentService} from '../../../services/assignment.service';
 import {Module} from '../../../models/modules';
 import swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss'
+import {ModuleContent} from '../../../models/modulecontent';
 
 @Component({
   selector: 'app-instructor-course-details',
@@ -20,7 +21,9 @@ export class InstructorCourseDetailsComponent implements OnInit {
   currentModule: Module;
   currentUser: User;
   assignment: Assignment = new Assignment();
+  moduleContent: ModuleContent = new ModuleContent();
   assignments: Array<Assignment>;
+  file: File;
 
   constructor(private route: ActivatedRoute, private courseService: CourseService, private assignmentService: AssignmentService) {
     this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -45,7 +48,6 @@ export class InstructorCourseDetailsComponent implements OnInit {
 
   addNewAssignment() {
     this.assignment.module = this.currentModule;
-    console.log(this.assignment);
     swal({
       title: 'Are you sure you want to add this assignment?',
       type: 'question',
@@ -78,5 +80,44 @@ export class InstructorCourseDetailsComponent implements OnInit {
     this.assignmentService.findAllAssignmentOfModule(this.moduleId).subscribe(assignments => {
       this.assignments = assignments;
     });
+  }
+
+  addNewMaterial() {
+    this.moduleContent.module = this.currentModule;
+    swal({
+      title: 'Are you sure you want to add this content?',
+      type: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel'
+    }).then(() => {
+      this.courseService.addModuleContent(this.moduleContent).subscribe((moduleContent) => {
+        this.courseService.addFile(this.file, moduleContent).subscribe((assignments) => {
+          this.file = null;
+        });
+        swal({
+          title: 'Success',
+          text: 'New material added successfully',
+          type: 'success',
+          showCancelButton: false,
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.moduleContent.video = "";
+          this.moduleContent.videoTitle = "";
+          this.moduleContent.transcript = "";
+          this.moduleContent.module = null;
+        })
+      });
+    }, function (dismiss) {
+      if (dismiss === 'cancel') {
+      }
+    })
+  }
+
+  fileChange(event) {
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      this.file = fileList[0];
+    }
   }
 }

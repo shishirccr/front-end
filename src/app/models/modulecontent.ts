@@ -4,5 +4,6 @@ export class ModuleContent {
     video: string="";
     videoTitle: string="";
     transcript: string="";
+    file: string="";
     module: Module;
 }
