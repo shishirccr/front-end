@@ -35,6 +35,8 @@ export class DiscussionHomeComponent implements OnInit {
   getAllDiscussions(){
     this.userService.getAllDiscussions().subscribe(data => {
       this.discussionList = data;
+      this.discussionList.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1);
+      this.discussionList.reverse();
     });
   }
 

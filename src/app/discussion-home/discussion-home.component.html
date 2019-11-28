@@ -30,9 +30,9 @@
                 <tr *ngFor="let item of discussionList;  index as ind">
                   <th scope="row">{{ind+1}}</th>
                   <b><td>{{item.title}}</td></b>
-                  <td>{{item.userID}}</td>
-                  <td>{{item.timestamp}}</td>
-                  <td><a routerLink="../discussion/{{item.postId}}" routerLinkActive="active"><button>Open -> {{item.postId}}</button></a></td>
+                  <td>{{item.userID.name}}</td>
+                  <td>{{item.timestamp | date: 'MM-dd-yyyy' }}</td>
+                  <td><a routerLink="../discussion/{{item.postId}}" routerLinkActive="active"><button>Open</button></a></td>
                 </tr>
 
 
