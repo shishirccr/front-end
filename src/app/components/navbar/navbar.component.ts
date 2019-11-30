@@ -4,6 +4,11 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { Router } from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {User} from '../../models/user';
+import {StudentAssignmentHomeComponent} from '../student/student-assignment-home/student-assignment-home.component';
+import {AuthGuard} from '../../guards/auth.guard';
+import {Role} from '../../models/role';
+import {InstructorCourseHomeComponent} from '../instructor/instructor-course-home/instructor-course-home.component';
+import {InstructorCourseDetailsComponent} from '../instructor/instructor-course-details/instructor-course-details.component';
 
 @Component({
   selector: 'app-navbar',
@@ -125,6 +130,10 @@ export class NavbarComponent implements OnInit {
       let titles = this.listTitles;
       titles.push({path: 'student-course-home/:courseId', title: 'My modules',  icon: 'dashboard', class: '' });
       titles.push({path: 'student-module-details/:moduleId', title: 'Module',  icon: 'dashboard', class: '' });
+      titles.push({path: 'student-assignment-home/:assignmentId', title: 'Assignment',  icon: 'dashboard', class: '' });
+      titles.push({path: 'instructor-course-home/:courseId', title: 'My module',  icon: 'dashboard', class: '' });
+      titles.push({path: 'instructor-course-details/:moduleId', title: 'Module',  icon: 'dashboard', class: '' });
+      titles.push({path: 'instructor-assignment-home/:assignmentId', title: 'Assignment',  icon: 'dashboard', class: '' });
       for(var item = 0; item < this.listTitles.length; item++){
           if(this.listTitles[item].path === titlee){
               return this.listTitles[item].title;

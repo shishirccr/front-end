@@ -7,12 +7,6 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { StudentCourseHomeComponent } from '../../components/student/student-course-home/student-course-home.component';
 import { StudentModuleDetailsComponent } from '../../components/student/student-module-details/student-module-details.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
-import { TableListComponent } from '../../table-list/table-list.component';
-import { TypographyComponent } from '../../typography/typography.component';
-import { IconsComponent } from '../../icons/icons.component';
-import { MapsComponent } from '../../maps/maps.component';
-import { NotificationsComponent } from '../../notifications/notifications.component';
-import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {PlayVideoComponent} from '../../components/student/play-video/play-video.component';
 import {ViewStudentComponent} from '../../components/instructor/view-student/view-student.component';
 import {StudentAssignmentHomeComponent} from '../../components/student/student-assignment-home/student-assignment-home.component';
@@ -66,12 +60,6 @@ import {DiscussionPostComponent} from '../../discussion-post/discussion-post.com
     AssignGradeComponent,
     ViewCourseDialogComponent,
     UserProfileComponent,
-    TableListComponent,
-    TypographyComponent,
-    IconsComponent,
-    MapsComponent,
-    NotificationsComponent,
-    UpgradeComponent,
     DiscussionHomeComponent,
     DiscussionPostComponent,
     DiscussionComponent

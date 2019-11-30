@@ -7,6 +7,7 @@ import {Assignment} from '../models/assignment';
 import {ModuleContent} from '../models/modulecontent';
 
 const ASSIGNMENT_API_URL = "http://localhost:8080/api/assignment/";
+const URL = "http://localhost:8080/";
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class AssignmentService {
   }
 
   findAllAssignmentOfModule(moduleId: string): Observable<any> {
-    return this.http.get("http://localhost:8080/api/course/modules/" + moduleId + "/assignments", {headers: this.headers});
+    return this.http.get(URL + "api/course/modules/" + moduleId + "/assignments", {headers: this.headers});
   }
 
   submitAssignment (assignment: Assignment): Observable<any> {
@@ -39,7 +40,7 @@ export class AssignmentService {
     const headers = new HttpHeaders({
       authorization:'Bearer ' + this.currentUser.token
     });
-    return this.http.get<any>('http://localhost:8080/api/assignment/download?file=' + filePath, {
+    return this.http.get<any>(ASSIGNMENT_API_URL + 'download?file=' + filePath, {
       headers: headers, 'responseType'  : 'arraybuffer' as 'json'
     });
   }

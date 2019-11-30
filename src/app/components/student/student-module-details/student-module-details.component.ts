@@ -76,7 +76,7 @@ export class StudentModuleDetailsComponent implements OnInit {
       relativeWidth = (this.innerWidth * 80 ) / 100;
     }
 
-    const relativeHeight = (relativeWidth * 9) / 16 + 120; // 16:9 to which we add 120 px for the dialog action buttons ("close")
+    const relativeHeight = (relativeWidth * 10) / 16 + 120; // 16:9 to which we add 120 px for the dialog action buttons ("close")
     dialogConfig.width = relativeWidth + 'px';
     dialogConfig.height = relativeHeight + 'px';
 

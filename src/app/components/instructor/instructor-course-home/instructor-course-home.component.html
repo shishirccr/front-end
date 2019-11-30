@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header card-header-danger" style = "background: #008010d1">
+        <div class="card-header card-header-danger"  style = "background: #334d5c">
           <h4 class="card-title ">Enrolled students</h4>
           <p class="card-category">{{currentInstructor.name}}</p>
         </div>
@@ -10,12 +10,10 @@
           <table class="table table-hover">
             <thead class="text-success">
             <th>Student name</th>
-            <th>Progress</th>
             </thead>
             <tbody>
             <tr *ngFor="let student of studentList">
               <td>{{student.name}}</td>
-              <td>0</td>
               <td class="td-actions left-right">
                 <button type="button" rel="tooltip" title="" class="btn btn-success btn-simple btn-lg" (click)="viewStudent(student)">
                   <i class="material-icons">launch</i>  View student
@@ -31,7 +29,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header card-header-danger" style = "background: #008010d1">
+        <div class="card-header card-header-danger"  style = "background: #ce8282">
           <h4 class="card-title ">Course modules</h4>
           <p class="card-category">{{currentInstructor.name}}</p>
         </div>
@@ -40,13 +38,11 @@
             <thead class="text-success">
             <th>Module Id</th>
             <th>Module title</th>
-            <th>Progress</th>
             </thead>
             <tbody>
             <tr *ngFor="let module of moduleList">
               <td>{{module.id}}</td>
               <td>{{module.title}}</td>
-              <td>0</td>
               <td class="td-actions left-right">
                 <button type="button" rel="tooltip" title="" class="btn btn-success btn-simple btn-lg" data-original-title="Edit Task" [routerLink]="['/home/instructor-course-details/',module.id]">
                   <i class="material-icons">launch</i>  View

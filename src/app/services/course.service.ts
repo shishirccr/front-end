@@ -5,7 +5,6 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {ModuleContent} from '../models/modulecontent';
 import {ResponseContentType} from '@angular/http';
 import {file} from 'googleapis/build/src/apis/file';
-
 let COURSE_API_URL = "http://localhost:8080/api/course/";
 
 @Injectable({
@@ -47,7 +46,7 @@ export class CourseService {
   const headers = new HttpHeaders({
     authorization:'Bearer ' + this.currentUser.token
   });
-  return this.http.get<any>('http://localhost:8080/api/course/modules/download?file=' + filePath, {
+  return this.http.get<any>(COURSE_API_URL + 'modules/download?file=' + filePath, {
   headers: headers, 'responseType'  : 'arraybuffer' as 'json'
 });
 }

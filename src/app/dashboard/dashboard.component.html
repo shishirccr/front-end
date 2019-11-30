@@ -10,7 +10,7 @@
     <div class="row" *ngIf="isInstructor">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header card-header-danger" style = "background: #008010d1">
+                <div class="card-header card-header-danger" style = "background: #334d5c">
                     <h4 class="card-title ">All courses</h4>
                     <p class="card-category">{{currentUser.name}}</p>
                 </div>
@@ -40,7 +40,7 @@
     <div class="row"  *ngIf="!isInstructor">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header card-header-danger" style = "background: #008010d1">
+                <div class="card-header card-header-danger" style = "background: #334d5c">
                     <h4 class="card-title ">Enrolled Courses</h4>
                     <p class="card-category">{{currentUser.name}}</p>
                 </div>
@@ -73,7 +73,7 @@
         </div>
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header card-header-danger">
+                <div class="card-header card-header-danger" style="background: #ce8282">
                     <h4 class="card-title ">Available courses</h4>
                     <p class="card-category">All courses available for enrollment</p>
                 </div>
