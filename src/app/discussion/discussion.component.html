@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-danger">
+                    <div class="card-header card-header-danger" style = "background: #334d5c;">
                         <h4 class="card-title "><b>{{discussionContent.title}}</b><a routerLink="" routerLinkActive="active">
-                            <button  style="float: right;" *ngIf="discussionContent.userID.id==this.currentStudent.id" (click)="deleteDiscussion()" >DELETE</button></a></h4>
+                            <button class="btn btn-simple" style="float: right; " style="float: right;" *ngIf="discussionContent.userID.id==this.currentStudent.id" (click)="deleteDiscussion()" >DELETE<i class="material-icons">delete</i></button></a></h4>
                         <b><p class="card-category">By {{discussionContent.userID.name}}</p></b>
                         <p class="card-category">{{discussionContent.timestamp | date: 'medium' }}</p>
                     </div>
@@ -16,16 +16,16 @@
                     </div>
                 </div>
                 <form>
-                    <input type="text"  placeholder="Say something here..." #cbody [(ngModel)]="commentInput" required/>
-                    <button type="button" (click)="submitComment(cbody.value)">Post Comment</button>
+                    <input type="text" class="form-control" placeholder="Say something here..." #cbody [(ngModel)]="commentInput" required/>
+                    <button type="button" class="btn btn-simple btn-success" style="float: right;" (click)="submitComment(cbody.value)"><i class="material-icons">send</i></button>
                 </form>
                 <br>
                 <hr>
                 <B>Comments:</B>
                 <div class="card-header" *ngFor="let item of commentContent; " >
                     <b>{{item.userID.name}}</b> says:
-                    <button  style="float: right;" *ngIf="item.userID.id==this.currentStudent.id" (click)="deleteComment(item.id)" >DELETE</button>
-                    <div class="card-header" style="background-color: #b6eeff">{{item.body}} </div>
+                    <button class="btn " style="float: right;" *ngIf="item.userID.id==this.currentStudent.id" (click)="deleteComment(item.id)" ><i class="material-icons">delete</i></button>
+                    <div class="card-header" style="background-color: rgba(237,172,164,0.78)">{{item.body }}</div>
                 </div>
             </div>
         </div>

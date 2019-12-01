@@ -31,6 +31,9 @@ import {
 import {DiscussionHomeComponent} from '../../discussion-home/discussion-home.component';
 import {DiscussionComponent} from '../../discussion/discussion.component';
 import {DiscussionPostComponent} from '../../discussion-post/discussion-post.component';
+import {MessagesHomeComponent} from '../../messages-home/messages-home.component';
+import {MessagesNewComponent} from '../../messages-new/messages-new.component';
+import {MessagesConvoComponent} from '../../messages-convo/messages-convo.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -62,7 +65,10 @@ import {DiscussionPostComponent} from '../../discussion-post/discussion-post.com
     UserProfileComponent,
     DiscussionHomeComponent,
     DiscussionPostComponent,
-    DiscussionComponent
+    DiscussionComponent,
+    MessagesHomeComponent,
+    MessagesNewComponent,
+    MessagesConvoComponent
   ],
   entryComponents: [
     PlayVideoComponent,

@@ -1,0 +1,37 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger" style = "background: #334d5c;">
+            <h4 class="card-title "><b>Messages</b>
+            <a routerLink="../messages-new"  routerLinkActive="active"><button class="btn btn-success btn-simple btn-lg" style="float: right;">
+              <i class="material-icons">rate_review</i> Compose
+            </button></a>
+            </h4>
+            <p class="card-category">Last refreshed on {{time | date: 'medium'}}</p>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+
+
+
+              <div class="card-header" style=" background-color: #b0bec5; margin-bottom: 5px;" *ngFor="let item of conversations; " >
+                <b style=" font-size: large;">{{item.recep.name}}</b> <br>
+                <a routerLink="../messages-convo/{{item.id}}" routerLinkActive="active">{{item.topic}} </a> <br>
+                <i style="font-size: small">{{item.timestamp | date: 'medium'}}</i>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

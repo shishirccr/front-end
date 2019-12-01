@@ -4,7 +4,8 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-danger">
-            <h4 class="card-title "><b>Write a discussion..</b><a routerLink="../discussion-home" routerLinkActive="active"><button  style="float: right;">x</button></a></h4>
+            <h4 class="card-title "><b>Write a discussion..</b><a routerLink="../discussion-home" routerLinkActive="active">
+              <button  class="btn btn-simple" style="float: right; ">Discard<i class="material-icons">delete</i></button></a></h4>
           </div>
           <div class="card-body">
 
@@ -18,8 +19,11 @@
               <div class="alert alert-danger" *ngIf="f.submitted && !body.valid">
                 Discussion cannot be empty.
               </div>
-              <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin form-submit-button">Submit</button>
+              <button type="submit" class="btn btn-success btn-simple btn-lg" style="float: right;">
+                Submit <i class="material-icons">send</i>
+              </button>
             </form>
+
           </div>
         </div>
       </div>

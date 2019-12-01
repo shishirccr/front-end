@@ -13,6 +13,9 @@ import {Role} from '../../models/role';
 import {DiscussionHomeComponent} from '../../discussion-home/discussion-home.component';
 import {DiscussionComponent} from '../../discussion/discussion.component';
 import {DiscussionPostComponent} from '../../discussion-post/discussion-post.component';
+import {MessagesConvoComponent} from '../../messages-convo/messages-convo.component';
+import {MessagesNewComponent} from '../../messages-new/messages-new.component';
+import {MessagesHomeComponent} from '../../messages-home/messages-home.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
@@ -25,5 +28,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
     { path: 'discussion-home', component: DiscussionHomeComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
     { path: 'discussion/:postId', component: DiscussionComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
-    { path: 'discussion-post', component: DiscussionPostComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}}
+    { path: 'discussion-post', component: DiscussionPostComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
+    { path: 'messages-home', component: MessagesHomeComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
+    { path: 'messages-new', component: MessagesNewComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}},
+    { path: 'messages-convo/:id', component: MessagesConvoComponent , canActivate: [AuthGuard], data: {roles: [Role.STUDENT, Role.TEACHER]}}
     ];
