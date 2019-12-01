@@ -3,7 +3,8 @@ import {User} from './user';
 export class Conversation {
     id: number;
     topic: string="";
-    userId: User;
+    firstmessage: string="";
+    user: User;
     timestamp: number;
-    recepId: User;
+    recep: User;
 }

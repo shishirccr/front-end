@@ -9,6 +9,9 @@ import {AuthGuard} from '../../guards/auth.guard';
 import {Role} from '../../models/role';
 import {InstructorCourseHomeComponent} from '../instructor/instructor-course-home/instructor-course-home.component';
 import {InstructorCourseDetailsComponent} from '../instructor/instructor-course-details/instructor-course-details.component';
+import {MessagesHomeComponent} from '../../messages-home/messages-home.component';
+import {MessagesNewComponent} from '../../messages-new/messages-new.component';
+import {MessagesConvoComponent} from '../../messages-convo/messages-convo.component';
 
 @Component({
   selector: 'app-navbar',
@@ -134,6 +137,10 @@ export class NavbarComponent implements OnInit {
       titles.push({path: 'instructor-course-home/:courseId', title: 'My module',  icon: 'dashboard', class: '' });
       titles.push({path: 'instructor-course-details/:moduleId', title: 'Module',  icon: 'dashboard', class: '' });
       titles.push({path: 'instructor-assignment-home/:assignmentId', title: 'Assignment',  icon: 'dashboard', class: '' });
+      titles.push({path: 'messages-home', title: 'Messages',  icon: 'dashboard', class: '' });
+      titles.push({path: 'messages-new', title: 'New message',  icon: 'dashboard', class: '' });
+      titles.push({path: 'messages-convo/:id', title: 'Conversation',  icon: 'dashboard', class: '' });
+
       for(var item = 0; item < this.listTitles.length; item++){
           if(this.listTitles[item].path === titlee){
               return this.listTitles[item].title;

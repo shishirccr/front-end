@@ -17,6 +17,7 @@ export class MessagesHomeComponent implements OnInit {
   private conversations2:  any;
   private list: Array<object>
   refreshTime: any;
+  private time: number;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
     this.currentStudent = JSON.parse(localStorage.getItem("currentUser"));
@@ -27,6 +28,7 @@ export class MessagesHomeComponent implements OnInit {
       if(params.has('id')){
         this.studentId = params.get('id');
       }
+      this.time = Date.now();
       this.getAllConversations();
       this.getAllRConversations();
     });

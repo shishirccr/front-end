@@ -19,6 +19,7 @@ export class MessagesConvoComponent implements OnInit {
   private currentStudent: User;
   private convoID: any;
   private message: Messages = new Messages();
+  private time: number;
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) {
     this.currentStudent = JSON.parse(localStorage.getItem("currentUser"));
   }
@@ -44,6 +45,7 @@ export class MessagesConvoComponent implements OnInit {
   }
 
   private getAllMessages() {
+    this.time = Date.now();
     this.userService.getMessages(this.convoID).subscribe(data => {
       this.messageList = data;
       this.messageList.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1);

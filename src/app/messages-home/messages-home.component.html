@@ -5,10 +5,11 @@
         <div class="card">
           <div class="card-header card-header-danger" style = "background: #334d5c;">
             <h4 class="card-title "><b>Messages</b>
-            <a routerLink="../messages-new" routerLinkActive="active"><button  style="float: right; background-color: #00c1f5; margin-right: 2px;">+ Compose</button></a>
-            <a routerLink="../messages-home" routerLinkActive="active"><button  style="float: right; ">Refresh</button></a>
+            <a routerLink="../messages-new"  routerLinkActive="active"><button class="btn btn-success btn-simple btn-lg" style="float: right;">
+              <i class="material-icons">rate_review</i> Compose
+            </button></a>
             </h4>
-            <p class="card-category">Last refreshed on ..</p>
+            <p class="card-category">Last refreshed on {{time | date: 'medium'}}</p>
           </div>
 
           <div class="card-body">

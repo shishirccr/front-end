@@ -8,6 +8,7 @@ import {CourseStudent} from '../models/coursestudent';
 import {Discussions} from '../models/discussions';
 import {Comments} from '../models/comments';
 import {Messages} from '../models/messages';
+import {Conversation} from '../models/conversation';
 
 let API_URL = "http://localhost:8080/api/user/";
 let STUDENT_API_URL = "http://localhost:8080/api/student/";
@@ -168,5 +169,16 @@ export class UserService {
   sendMessage(message: Messages) {
     return this.http.post(API_URL + "messages/newMessage/", JSON.stringify(message),
         {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
+
+  getRecipInfo(name: string){
+    this.setHeaders();
+    return this.http.get(API_URL + "messages/getrecipinfo/"+name, {headers: this.headers});
+  }
+
+  createConversation(conversation: Conversation){
+    this.setHeaders();
+    return this.http.post(API_URL + "messages/newconversation/", JSON.stringify(conversation),
+        {headers: this.headers});
   }
 }
