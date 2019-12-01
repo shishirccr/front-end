@@ -1,0 +1,48 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger" style = "background: #334d5c;">
+                        <h4 class="card-title "><b>{{conversation.topic}}</b>
+                            <a routerLink="../messages-home" routerLinkActive="active"><button  style="float: right; ">Go back</button></a>
+                        </h4>
+                        <p class="card-category">Last refreshed on ..</p>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+
+                            <form name="form-signup" (ngSubmit)="f.form.valid && sendMessage()" #f="ngForm" novalidate >
+                                <input type="text" placeholder="Reply..." class="form-control" name="reply" id="reply" [(ngModel)]="message.text" #reply="ngModel" required />
+                                <div class="alert alert-danger" *ngIf="f.submitted && !reply.valid">
+                                    Message cannot empty...
+                                </div>
+                                <button type="submit" style="background: #7c4dff;" class="btn btn-lg btn-primary btn-block btn-signin form-submit-button">Send</button>
+                            </form>
+                            <hr>
+                            <div *ngFor="let item of messageList; ">
+                                <div *ngIf="item.user.id==currentStudent.id; else elseBlock">
+                                    <div class="card-header" style=" background-color: #b0bec5; margin-bottom: 5px;"  >
+                                        <b style=" font-size: large;">{{item.text}}</b> <br>
+                                        <i style="font-size: smaller">{{item.timestamp | date: 'medium'}}</i>
+                                    </div>
+                                </div>
+                                <ng-template #elseBlock>
+                                    <div class="card-header" style=" background-color: #68c563; margin-bottom: 5px;"  >
+                                        <b style=" font-size: large;">{{item.text}}</b> <br>
+                                        <i style="font-size: smaller">{{item.timestamp | date: 'medium'}}</i>
+                                    </div>
+                                </ng-template>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

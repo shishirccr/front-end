@@ -7,6 +7,7 @@ import {Course} from '../models/course';
 import {CourseStudent} from '../models/coursestudent';
 import {Discussions} from '../models/discussions';
 import {Comments} from '../models/comments';
+import {Messages} from '../models/messages';
 
 let API_URL = "http://localhost:8080/api/user/";
 let STUDENT_API_URL = "http://localhost:8080/api/student/";
@@ -98,7 +99,7 @@ export class UserService {
     this.setHeaders();
     return this.http.post(API_URL + "profileupdate", JSON.stringify(user), {headers: this.headers});
   }
-  
+
   // ------------------------------------------------------------------ Discussions API
 
   getAllDiscussions(): Observable<any> {
@@ -141,5 +142,31 @@ export class UserService {
         JSON.stringify(commentID), {headers: this.headers});
   }
 
+  // ------------------------------------------------------------------ Messages API
 
+
+  findConversationsByUserID(studentId: number) {
+    this.setHeaders();
+    return this.http.get(API_URL + "messages/conversations/"+studentId, {headers: this.headers});
+  }
+
+  findConversations2ByUserID(studentId: number) {
+      this.setHeaders();
+      return this.http.get(API_URL + "messages/conversationsrecep/"+studentId, {headers: this.headers});
+  }
+
+  getConvoMeta(convoId: number){
+    this.setHeaders();
+    return this.http.get(API_URL + "messages/conversationmeta/"+convoId, {headers: this.headers});
+  }
+
+  getMessages(convoId: number){
+    this.setHeaders();
+    return this.http.get(API_URL + "messages/conversation/"+convoId, {headers: this.headers});
+  }
+
+  sendMessage(message: Messages) {
+    return this.http.post(API_URL + "messages/newMessage/", JSON.stringify(message),
+        {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
 }
