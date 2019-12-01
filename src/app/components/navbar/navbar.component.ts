@@ -59,7 +59,12 @@ export class NavbarComponent implements OnInit {
     };
     sidebarClose() {
         const body = document.getElementsByTagName('body')[0];
-        this.toggleButton.classList.remove('toggled');
+        try {
+            this.toggleButton.classList.remove('toggled');
+        } catch (e) {
+            const navbar: HTMLElement = this.element.nativeElement;
+            this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+        }
         this.sidebarVisible = false;
         body.classList.remove('nav-open');
     };
@@ -153,7 +158,7 @@ export class NavbarComponent implements OnInit {
 
     logOut(){
         this.userService.logOut().subscribe(data => {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/homepage']);
         });
     }
 }
