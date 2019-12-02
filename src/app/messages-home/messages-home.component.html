@@ -18,8 +18,17 @@
 
 
               <div class="card-header" style=" background-color: #b0bec5; margin-bottom: 5px;" *ngFor="let item of conversations; " >
-                <b style=" font-size: large;">{{item.recep.name}}</b> <br>
-                <a routerLink="../messages-convo/{{item.id}}" routerLinkActive="active">{{item.topic}} </a> <br>
+
+                <div *ngIf="item.user.id==currentStudent.id; else elseBlock">
+                  <i style="font-size: small">{{item.recep.name}}</i>
+                </div>
+                <ng-template #elseBlock>
+                 <div><i style="font-size: small">{{item.user.name}}</i></div>
+                </ng-template>
+
+                <br>
+<!--                <b style=" font-size: large;">{{item.recep.name}}</b> <br>-->
+                <a routerLink="../messages-convo/{{item.id}}" routerLinkActive="active"><b>{{item.topic}}</b> </a> <br>
                 <i style="font-size: small">{{item.timestamp | date: 'medium'}}</i>
               </div>
 
