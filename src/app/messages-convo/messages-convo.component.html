@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger" style = "background: #334d5c;">
-                        <h4 class="card-title "><b>{{conversation.topic}}</b>
+                        <h4 class="card-title "><b>{{conversation.recep.name}}<br><i>{{conversation.topic}}</i></b>
                             <a routerLink="../../messages-home" routerLinkActive="active"><button class="btn btn-simple"  style="float: right; "><i class="material-icons">arrow_back</i></button></a>
                         </h4>
                         <p class="card-category">Last refreshed on {{time | date: 'medium'}}</p>
@@ -34,6 +34,7 @@
                                 </div>
                                 <ng-template #elseBlock>
                                     <div class="card-header" style=" background-color: #68c563; margin-bottom: 5px;"  >
+                                        <i style="font-size: smaller">{{conversation.recep.name}}</i>
                                         <b style=" font-size: large;">{{item.text}}</b> <br>
                                         <i style="font-size: smaller">{{item.timestamp | date: 'medium'}}</i>
                                     </div>
