@@ -1,5 +1,12 @@
 
+# Learning management System Front end (ELMS)
 
+The project is the Front End for an ELMS platform. It show cases the following:
+1. Courses
+2. Student Dashboard
+3. Instructor Dashboard
+4. Creating, Grading and Submitting assignment
+5. File upload and download supported.
 
 The UI is build upon Material Dashboard. Material Dashboard makes use of light, surface and movement. The general layout resembles sheets of paper following multiple different layers, so that the depth and order is obvious. The navigation stays mainly on the left sidebar and the content is on the right inside the main panel.
 
